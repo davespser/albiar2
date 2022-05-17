@@ -47,8 +47,8 @@ letter-spacing: lpx;
  text-decoration: underline;
 }
 .caja-video video {
-  width: 600px;
-  height: 600px;
+  width: 1280px;
+  height: 720px;
   object-fit: cover;
   position: absolute;
  position: fixed;
