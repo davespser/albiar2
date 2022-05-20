@@ -14,12 +14,13 @@ body {
 contenedor {
   width:75%;
   margin: auto;
-  z-index: -3;
+  
 }
 .top .contenedor {
  display: flex;
  justify-content: space-between;
  align-items: center;
+  z-index: 3;
 }
 .logo h1 {
  color: white;
