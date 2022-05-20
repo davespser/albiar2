@@ -35,6 +35,7 @@ contenedor {
   list-style-tipe: none;
   margin: 0;
   padding: 0;
+  z-index: 3;
 }
 .bmenu ul li:not(:last-child) {
   margin-right: 30px;
@@ -44,7 +45,7 @@ contenedor {
 font-family: "Montserrat", sans-serif;
 text-decoration: none:
 letter-spacing: lpx;
-   z-index: 3;
+   
 }
 .bmenu ul li a:hover {
  color: orange;
@@ -60,7 +61,7 @@ top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -1;
+  z-index: 1;
 }
 .caja-info {
  color: white;
@@ -74,7 +75,7 @@ top: 0;
   right: 0;
   botton: 100;
   left: 0;
- z-index: 3;
+ z-index: 2;
 }
 .caja-info h2, .caja-info h3 {
   margin: 0 0 20px;
