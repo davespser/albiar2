@@ -57,7 +57,7 @@ top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1;
+  z-index: -1;
 }
 .caja-info {
  color: white;
@@ -67,7 +67,7 @@ top: 0;
  justify-content: center;
  height: 100vh;
  position: absolute;
- top: 0;
+ top: 100;
   right: 0;
   botton: 100;
   left: 0;
