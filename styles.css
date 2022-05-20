@@ -20,7 +20,7 @@ contenedor {
  display: flex;
  justify-content: space-between;
  align-items: center;
-  z-index: 3;
+  
 }
 .logo h1 {
  color: white;
@@ -44,6 +44,7 @@ contenedor {
 font-family: "Montserrat", sans-serif;
 text-decoration: none:
 letter-spacing: lpx;
+   z-index: 3;
 }
 .bmenu ul li a:hover {
  color: orange;
