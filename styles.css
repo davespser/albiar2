@@ -9,6 +9,7 @@ body {
   border-botton: lpx white;
   box-shadow: 0 0 6px black;
  /*background-color: rgba(0, 0, 0, 0.3); */
+  z-index: 2;
 }
 contenedor {
   width:75%;
@@ -56,7 +57,7 @@ top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 2;
+  z-index: 1;
 }
 .caja-info {
  color: white;
@@ -68,9 +69,9 @@ top: 0;
  position: absolute;
  top: 0;
   right: 0;
-  botton: 0;
+  botton: 100;
   left: 0;
- z-index: 1;
+ z-index: 3;
 }
 .caja-info h2, .caja-info h3 {
   margin: 0 0 20px;
