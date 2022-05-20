@@ -9,11 +9,12 @@ body {
   border-botton: lpx white;
   box-shadow: 0 0 6px black;
  /*background-color: rgba(0, 0, 0, 0.3); */
-  z-index: -3;
+  
 }
 contenedor {
   width:75%;
   margin: auto;
+  z-index: -3;
 }
 .top .contenedor {
  display: flex;
