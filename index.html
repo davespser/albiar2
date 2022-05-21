@@ -6,13 +6,36 @@
  		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="materialize.min.css">
 		<link rel="stylesheet" href="styles.css">
+		<style>
+    #capa1{ position:absolute;
+         z-index:1 ;
+         background-color:#FFFFFF;
+         width: 100%;
+        height: 100%;
+     }
+
+    #capa2{ position:absolute; 
+         left: 150px;
+        top: 200px; 
+        width: 75%;
+        height: 25%;
+        z-index:3; background-color: rgba(0, 0, 0, 0);  }
+    #capa3{ position:absolute; 
+         left: -200px;
+        top: -140px; 
+        width: 100%;
+        height: 100%;
+        z-index:2; background-color: rgba(0, 0, 0, 0);  }
+   </style>
 		<script src="materialize.min.js"></script>
 		<script src="main.js"></script>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	</head>
 
 	<body>
+		
 	 <header class="cabezote">
+		  <div id="capa1">
 		<div class="top">
 			
 			<div class="contenedor">
@@ -32,10 +55,11 @@
 				</nav>
 			</div>
 			</div>
+		 </div>
 			<div class="caja-info"> 
   	<h2>TE AMO</h2>
 	<h3>esto solo acaba de empezar mi vida</h3>
-	</video>
+		  <div id="capa2">
    <div class="carousel center-align">
                     <div class="carousel-item">
                       
@@ -46,15 +70,18 @@
                         <img src="ana.png" alt="">
  		</div>
    </div>
+				</div>
 		
 	
 	
 	<audio src="micancion.mp3" autoplay="autoplay" loop="loop"></audio>
+		  <div id="capa3">
 	<div class="caja-video"> 
   	<video muted autoplay loop poster="Canteras_romanas3.jpg">
 	<source src="webm.mp4">
 	</video>
 	</div>
+		 </div>
 
  	
 
