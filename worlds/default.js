@@ -43,22 +43,27 @@ export function init(Constants) {
 			modelType: "glb",
 			shadow: false,
 			singleSided: true,    type: "3d",
+
             }
 	},
 
 	{
-            card: {
-		  	translation: [14, -1.65, -32],
-			scale: [1.5, 1.5, 1.5],
-			rotation: [0, Math.PI / 4, 0],
-			layers: ["pointer", "walk"],
-			name: "/tesla-cybertruck.glb",
-			dataLocation: "./assets/3D/tesla-cybertruck.glb",
-			fileName: "/tesla-cybertruck.glb",
-			modelType: "glb",
-			shadow: false,
-			singleSided: true,    type: "3d",
+            
+card: {
+		translation: [14, -1.65, -32],
+		rotation: [0, Math.PI / 2, 0],
+                layers: ["pointer", "portal"],
+                className: "PortalActor",
+                color: 16737996,
+                cornerRadius: 0.05,
+                depth: 0.05,
+                frameColor: 8947848,
+                height: 6,
+                portalURL: "?world=factory",
+                type: "2d",
+                width: 4,
             }
+            
 
         },
 
