@@ -4,7 +4,7 @@
 
 export function init(Constants) {
     Constants.AvatarNames = [
-        "newwhite", "madhatter", "marchhare", "queenofhearts", "cheshirecat", "alice"
+        "david"
     ];
 
     Constants.UserBehaviorDirectory = "behaviors/factory";
