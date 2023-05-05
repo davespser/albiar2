@@ -47,25 +47,6 @@ export function init(Constants) {
             }
 	},
 
-	{
-            
-card: {
-		translation: [14, -1.65, -32],
-		rotation: [0, Math.PI / 2, 0],
-                layers: ["pointer", "portal"],
-                className: "PortalActor",
-                color: 16737996,
-                cornerRadius: 0.05,
-                depth: 0.05,
-                frameColor: 8947848,
-                height: 6,
-                portalURL: "?world=factory",
-                type: "2d",
-                width: 4,
-            }
-            
-
-        },
 
 {
             card: {
