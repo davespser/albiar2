@@ -8,7 +8,7 @@ export function init(Constants) {
         "david"
 	    goTo([0, 0, 0], [0, 0, 0, 1]);
 this.set({lookPitch: 0, lookYaw: 0});
-this.say("setLookAngles", {pitch: 0, yaw: 0, lookOffset: [0, 0, 0]});
+this.say("setLookAngles", {pitch: 0, yaw: 0, lookOffset: [0, 5, 5]});
 
     ];
 
