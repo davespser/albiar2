@@ -6,8 +6,7 @@
 export function init(Constants) {
     Constants.AvatarNames = [
         "david"
-this.set({lookPitch: 0, lookYaw: 0});
-this.say("setLookAngles", {pitch: 0, yaw: 0, lookOffset: [0, 15, 5]});
+
 
     ];
 
