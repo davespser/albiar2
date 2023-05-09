@@ -8,8 +8,12 @@ export function init(Constants) {
         "david"
 
 
-    ];
-
+];
+    constants.avatarActor = [
+	    goTo([0, 0, 0], [0, 0, 0, 1]);
+this.set({lookPitch: 0, lookYaw: 0});
+this.say("setLookAngles", {pitch: 0, yaw: 0, lookOffset: [0, 5, 10]});
+]
     Constants.UserBehaviorDirectory = "behaviors/tutorial";
     Constants.UserBehaviorModules = [
         "lights.js", "gridFloor.js", "joeTheBox.js"
