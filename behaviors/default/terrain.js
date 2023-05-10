@@ -65,8 +65,9 @@ class TerrainPawn {
         this.waterLevel = this.heightFieldHeight * 0.305556;
         this.waterGlobal = -16.695;
         this.inWater = false;
-        this.fogColor = new THREE.Color(28.631, 41.7606, 7.1676);
-        this.grassColor = new THREE.Color(14.4836, 25.8189, 6.6030);	
+        this.fogColor = new THREE.Color(0.74, 0.77, 0.91);
+        this.grassColor = new THREE.Color(4.5572, 9.1143, 1.5191);
+
         this.waterColor = new THREE.Color(0.6, 0.7, 0.85);
         this.fogDist = this.scaleHill*this.grassPatchRadius * 20.0;
         this.grassFogDist = this.scaleHill*this.grassPatchRadius * 2.0;
