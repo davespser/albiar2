@@ -314,7 +314,7 @@ class TerrainPawn {
     teardown() {
         let assetManager = this.service("AssetManager").assetManager;
 
-        assetManager.revoke("./assets/images/heightmap.jpg", this.id);
+        assetManager.revoke("./assets/images/heightmap .jpg", this.id);
         assetManager.revoke("./assets/images/noise.jpg", this.id);
         assetManager.revoke("./assets/images/grass.jpg", this.id);
         assetManager.revoke("./assets/images/terrain1.jpg", this.id);
