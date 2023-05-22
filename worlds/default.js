@@ -189,7 +189,7 @@ export function init(Constants) {
                 behaviorModules: ["Terrain", "Menus"],
                 layers: ["terrain"],
                 type: "object",
-                translation:[0, 0, 0],
+                translation:[0, 0, -0.1],
                 shadow: true,
                 attribution: "Terra   Mike Linkovich (spacejack) on Github",
             }
@@ -206,7 +206,7 @@ export function init(Constants) {
         },
         {
             card:{
-                translation: [14.323492647614785, -2.7804596526792222, -5.391810022345661],
+                translation: [14.323492647614785, -0.1, -5.391810022345661],
                 rotation: [0, -0.01904446484351159, 0, 0.9998186377332763],
                 layers: ["walk"],
                 name: "/treepack4_small.glb",
@@ -251,6 +251,89 @@ export function init(Constants) {
                 flatten: true,
                 attribution: "Havolik, modified by Kai Oldman",
             },
-        }
+        },
+ 	{
+            card: {
+                dataLocation: "./assets/3D/muralla1.glb",
+                dataScale: [1,1,1],
+                fileName: "/muralla1.glb",
+                layers: [
+                    "walk", "pointer"
+                ],
+                modelType: "glb",
+                name: "/muralla1.glb",
+                translation: [-6.715280474931255, 18.87901682475671, -41.579276],
+		scale:[1.,1, 1],
+                rotation: [0, 0.015, 0, 1],
+                shadow: true,
+                singleSided: true,
+                noFog: true,
+                type: "3d",
+                flatten: true,
+                attribution: "Havolik, modified by Kai Oldman",
+            },
+        },
+ 	{
+            card: {
+                dataLocation: "./assets/3D/edificio0.glb",
+                dataScale: [1,1,1],
+                fileName: "/edificio0.glb",
+                layers: [
+                    "walk", "pointer"
+                ],
+                modelType: "glb",
+                name: "/edificio0.glb",
+                translation: [
+                    -33.88888421269037,
+                    -54.86586248234326,
+                    -14.011212970329598
+                ],
+		scale:[
+5.67049804449688,5.67049804449688,5.67049804449688
+		],
+                rotation: [
+                    0,
+                    0.015089262096569106,
+                    0,
+                    0.9998861506038481
+                ],
+                shadow: true,
+                singleSided: true,
+                noFog: true,
+                type: "3d",
+                flatten: true,
+                attribution: "Havolik, modified by Kai Oldman",
+            },
+	},
+{
+     card: {
+                dataLocation: "./assets/3D/cartagenapuerto.glb",
+                dataScale: [0.5,0.5,0.5],
+                fileName: "/cartagenapuerto.glb",
+                layers: [
+                    "walk", "pointer"
+                ],
+                modelType: "glb",
+                name: "/cartagenapuerto.glb",
+                translation: [
+                    200.88888421269037,
+                    100,
+                    -301],
+
+                rotation: [
+                    0,
+                    0.015089262096569106,
+                    0,
+                    0.9998861506038481
+                ],
+                shadow: true,
+                singleSided: true,
+                noFog: true,
+                type: "3d",
+                flatten: true,
+                attribution: "Havolik, modified by Kai Oldman",
+		},
+            },
+        
     ];
 }
