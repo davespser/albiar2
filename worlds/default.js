@@ -1,56 +1,279 @@
+// mythos.js
 // Copyright 2022 by Croquet Corporation, Inc. All Rights Reserved.
 // https://croquet.io
 // info@croquet.io
 
-export function init(Constants) {
-    Constants.AvatarNames = ["newwhite"];
 
-    /* Alternatively, you can specify a card spec for an avatar,
-       instead of a string for the partical file name, to create your own avatar.
-       You can add behaviorModules here. Also, if the system detects a behavior module
-       named AvatarEventHandler, that is automatically installed to the avatar.
-        {
-            type: "3d",
-            modelType: "glb",
-            name: "rabbit",
-            dataLocation: "./assets/avatars/newwhite.zip",
-            dataRotation: [0, Math.PI, 0],
-            dataScale: [0.3, 0.3, 0.3],
-        }
-    */
+export function init(Constants) {
+    Constants.AvatarNames = ["newwhite", "madhatter", "marchhare", "queenofhearts", "cheshirecat", "alice"].map((n) => ({
+        type: "3d",
+        name: n,
+        modelType: "glb",
+        avatarType: "wonderland",
+        dataLocation: `./assets/avatars/${n}.zip`,
+        dataRotation: [0, Math.PI, 0],
+        dataScale: [0.3, 0.3, 0.3],
+        behaviorModules: ["HillsideWalker"]
+    }));
 
     Constants.UserBehaviorDirectory = "behaviors/default";
     Constants.UserBehaviorModules = [
-        "csmLights.js"
+        "lights.js", "terrain.js", "ambientSound.js", "fireball.js",
+        "blowing.js", "crowd.js", "horse.js", "menus.js", "urlLink.js", "replaceWorld.js", "walker.js"
     ];
+
+
+    // rotates an object around a center point.
+    function rotateTo(center, length, angle){
+        let pos = [];
+        pos.push(length*Math.sin(angle));
+        pos.push(0);
+        pos.push(length*Math.cos(angle));
+        pos[0]+=center[0];
+        pos[1]=center[1];
+        pos[2]+=center[2];
+        return pos;
+    }
 
     Constants.DefaultCards = [
         {
             card: {
-                name:"world model",
-		dataLocation: "./assets/3D/cartagena.glb",
-		dataScale: [1,1,1],
-                layers: ["walk"],
-                type: "3d",
-                singleSided: true,
-                shadow: true,
-                translation:[0, 0, -0.2],
-                placeholder: true,
-                placeholderSize: [524, 0.1, 524],
-                placeholderColor: 0x808080,
-                placeholderOffset: [0, 0, 0],
-            }
+                name: "ambient sound",
+                // translation: [0, 0, -2],
+                // layers: ["pointer"],
+                type: "object",
+                behaviorModules: ["AmbientSound"],
+                dataType: "aac",
+                dataLocation: "./assets/sounds/WindAmbience.aac",
+                // textureLocation: "./assets/images/mythos.png",
+                loop: true,
+                volume: 0.2,
+                maxVolume: 0.3
+            },
+            id: "ambientSound"
         },
         {
             card: {
                 name: "light",
                 layers: ["light"],
                 type: "lighting",
-                behaviorModules: ["Light"],
-                dataLocation: "3OF2-s4U1ZOJduGATmLEIXo1iTkQHd5ZBknKgL5SvqpQJzs7Pzx1YGApJiMqPGE6PGEsPSA-Oio7YSYgYDpgCCsZLTYjBjwOJB4sDRcrfAg3Ljk2OBoEGBYWfWAmIGEsPSA-Oio7YSImLD0gOSo9PCpgPwB9AAIIISx8YiYneScqKyQaIisNLHkaGT8YKg56JQwQfHstPiNiGQ49e2ArLjsuYCMBPgMiCQt3OQskGhcleSp9HQIIfXseHgo7EAo9CB48FRwpegsCLH4OIwY",
-                fileName: "/abandoned_parking_4k.jpg",
+                behaviorModules: ["Lights"],
                 dataType: "jpg",
+                dataLocation: "./assets/sky/aboveClouds.jpg",
+                attribution: "Above the Clouds texture from HDRMaps.com",
+                clearColor: 0xffffff,
             }
         },
+
+        {
+            card: {
+                name: "fireball",
+               // layers: ["light"],
+                type: "object",
+                behaviorModules: ["Fireball"],
+                layers:["pointer"],
+                translation: [
+                    137.04842673287243,
+                    -16.422857610412652,
+                    215.58989538473676
+                ],
+                attribution: "https://www.clicktorelease.com/blog/vertex-displacement-noise-3d-webgl-glsl-three-js/",
+            },
+        },
+        {
+            card: {
+                name: "horse",
+                layers: ["pointer"],
+                type: "3d",
+                behaviorModules: ["Horse"],
+                modelType: "glb",
+                dataLocation: "./assets/3D/horse_stone_light.glb",
+                dataScale: [0.1, 0.1, 0.1],
+                translation: [
+                    0,
+                    0,
+                    0
+                ],
+                attribution: "Mirada for Ro.me",
+            },
+        },
+
+        /*{
+            card: {
+                name: "Croquet Card",
+                //behaviorModules: ["ReplaceWorld"],
+                //targetURL: "https://croquet.io/microverse/?world=test",
+                translation: [0, 1.5, -7.963],
+                //    translation: [4.440892098500626e-16, 2.5357677795120512, -7.9631457611584615],
+                //rotation: [0, Math.PI / 2, 0],
+                layers: ["pointer"],
+                scale: [4, 4, 4],
+                type: "2d",
+                textureType: "image",
+                textureLocation: "./assets/images/CroquetLogo_RGB.jpg",
+                cardURL: "https://croquet.io",
+                behaviorModules: ["URLLink"],
+                fullBright: true,
+                frameColor: 0xcccccc,
+                color: 0xffffff,
+                cornerRadius: 0.5,
+                depth: 0.05,
+                shadow: true,
+            }
+        },*/
+
+        {
+            card: {
+                name: "Gallery Card",
+                behaviorModules: ["ReplaceWorld"],
+                replaceWorldTargetURL: "https://croquet.github.io/gallery",
+                replaceWorldPreserveOrigin: "//(.*\\.)?croquet.(io|dev)$",
+                translation: rotateTo([0, 1.5, 4], -11.963, 2*Math.PI/7),
+                rotation: [0, 2*Math.PI/7, 0],
+                layers: ["pointer"],
+                scale: [4, 4, 4],
+                type: "2d",
+                textureType: "image",
+                textureLocation: "./assets/images/Croquet Gallery.png",
+                fullBright: true,
+                frameColor: 0xcccccc,
+                color: 0xffffff,
+                cornerRadius: 0.05,
+                depth: 0.05,
+                shadow: true,
+            }
+        },
+        {
+            card: {
+                name: "Physics Card",
+                translation: rotateTo([0, 1.5, 4], -11.963, 3*Math.PI/7),
+                rotation: [0, 3*Math.PI/7, 0],
+                behaviorModules: ["ReplaceWorld"],
+                replaceWorldTargetURL: "https://croquet.github.io/physics/",
+                replaceWorldPreserveOrigin: "//(.*\\.)?croquet.(io|dev)$",
+                layers: ["pointer"],
+                scale: [4, 4, 4],
+                type: "2d",
+                textureType: "image",
+                textureLocation: "./assets/images/Fountain.png",
+                fullBright: true,
+                frameColor: 0xcccccc,
+                color: 0xffffff,
+                cornerRadius: 0.05,
+                depth: 0.05,
+                shadow: true,
+            }
+        },
+        {
+            card: {
+                name: "About Mythos",
+                translation: rotateTo([0, 1, 4], -11.963, 5*Math.PI/7), //[-5, 2.1, -7.963],
+                rotation: [0, 4*Math.PI/7, 0],
+                scale: [4, 4, 4],
+                layers: ["pointer"],
+                behaviorModules: ["PDFView"],
+                color: 8947848,
+                depth: 0.05,
+                frameColor: 16777215,
+                fullBright: true,
+                modelType: "pdf",
+                pdfLocation: "./assets/PDF/Mythos Readme.pdf",
+                shadow: true,
+                singleSided: true,
+                type: "2d",
+            }
+        },
+        {
+            card: {
+                name:"Terrain",
+                behaviorModules: ["Terrain", "Menus"],
+                layers: ["terrain"],
+                type: "object",
+                translation:[0, 0, 0],
+                shadow: true,
+                attribution: "Terra   Mike Linkovich (spacejack) on Github",
+            }
+        },
+        {
+            card: {
+                name:"Crowd",
+                behaviorModules: ["Crowd"],
+                layers: ["pointer"],
+                type: "object",
+                translation:[0, 0, 0],
+                shadow: true,
+            }
+        },
+        {
+            card:{
+          translation: [-4.933237958055071, -2.0866058139658676, -42.412232723806156],
+    scale: [0.8235336534424736, 0.8235336534424736, 0.8235336534424736],
+    rotation: [0, 0.9428291226258131, 0, 0.3332765301197186],
+    layers: ["walk", "pointer"],
+    behaviorModules: ["Blowing"],
+    name: "/treepack4_small.glb",
+    dataLocation: "36bHrAibIhhNDw5QTWfleb-P1ufV9Gp4EKM28m0ss4iUXkJCRkUMGRlQX1pTRRhDRRhVRFlHQ1NCGF9ZGUMZYHp-UmwPBQdUcFVsckMHd19iAUJ4X3RCDlx8BBlfWRhVRFlHQ1NCGFJPWFdAU0RFUxlQZlFiYnJBQEIEAldxD1VnRUcHbHppUgN6blJjUXpvT3xVZ0J7bm5_ckZ_GVJXQlcZY29dBAJQYQFHfVdnWXxRUw4CbmZbZntpY0R9WHlPV1xaeX9RaUQBBhtUUQ",
+    dataScale: [1.5, 1.5, 1.5],
+    fileName: "/treepack4_small.glb",
+    flatten: true,
+    modelType: "glb",
+    noFog: true,
+    shadow: true,
+    singleSided: true,
+    type: "3d",
+            }
+        },
+        {
+            card: {
+                dataLocation: "./assets/3D/galleon_model.glb",
+                dataScale: [1,1,1],
+                fileName: "/galleon_model.glb",
+                layers: [
+                    "walk", "pointer"
+                ],
+                modelType: "glb",
+                name: "/galleon_model.glb",
+                translation: [
+                    197.04842673287243,
+                    -16.822857610412652,
+                    215.58989538473676
+                ],
+                rotation: [
+                    0,
+                    -0.8375393574138387,
+                    0,
+                    0.5463769987680797
+                ],
+                shadow: true,
+                singleSided: true,
+                noFog: true,
+                type: "3d",
+                flatten: true,
+                attribution: "Havolik, modified by Kai Oldman",
+            },
+        },
+ 	{
+            card: {
+                 translation: [152.8688916176863, -19, 86.75497384472558],
+    layers: ["walk", "pointer"],
+    name: "/cartagena.glb",
+    dataLocation: "./assets/3D/cartagenapuerto.glb",
+    dataScale: [1, 1, 1],
+    fileName: "/cartagena.glb",
+    flatten: true,
+    modelType: "glb",
+    noFog: true,
+    placeholder: true,
+    placeholderColor: 8421504,
+    placeholderOffset: [0, 0, 0],
+    placeholderSize: [1000, 0.1, 1000],
+    shadow: true,
+    singleSided: false,
+    type: "3d",
+            },
+        },
+ 
+
+        
     ];
 }
