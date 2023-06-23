@@ -62,8 +62,8 @@ class TerrainPawn {
         this.heightFieldHeight = 180.0;
         this.scaleHill = 0.4;
         this.invScaleHill = 1.0/this.scaleHill;
-        this.waterLevel = this.heightFieldHeight * 0.48;
-        this.waterGlobal = 1.795;
+        this.waterLevel = this.heightFieldHeight * 0.305556;
+        this.waterGlobal = -16.695;
         this.inWater = false;
         this.fogColor = new THREE.Color(0.74, 0.77, 0.91);
         this.grassColor = new THREE.Color(0.45, 0.46, 0.19);
@@ -74,7 +74,7 @@ class TerrainPawn {
         this.height = -0.430*this.heightFieldHeight/2; // where is the terrain?
 
         const scene = this.service("ThreeRenderManager").scene;
-	 scene.fog = new THREE.Fog(this.fogColor.getHex(), -10, this.fogDist);
+        scene.fog = new THREE.Fog(this.fogColor.getHex(), 0.1, this.fogDist);
 
         this.constructHillside();
         this.listen("updateWorld", this.update);
@@ -85,7 +85,7 @@ class TerrainPawn {
         const THREE = Microverse.THREE;
 
         // images
-        let heightmap_I = await this.loadImageAsset("./assets/images/DisplacementMap.png");
+        let heightmap_I = await this.loadImageAsset("./assets/images/heightmap.jpg");
         let noise_I = await this.loadImageAsset("./assets/images/noise.jpg");
         // textures
         let grass_T = this.loadTextureAsset("./assets/images/grass.jpg");
@@ -135,7 +135,7 @@ class TerrainPawn {
                 image: heightmap_I
             });
 //console.log("heightField:", this.heightField)
-            var LIGHT_DIR = new THREE.Vector3(0.0, 2.0, -2.0);
+            var LIGHT_DIR = new THREE.Vector3(0.0, 1.0, -1.0);
             LIGHT_DIR.normalize(LIGHT_DIR, LIGHT_DIR);
             var tMap = terramap_S.createTexture(this.heightField, LIGHT_DIR, noise_I);
             this.windIntensity = this.WIND_DEFAULT;
@@ -187,7 +187,7 @@ class TerrainPawn {
             this.terrain.mesh.raycast = ()=>{};
             this.group.add(this.terrain.mesh);
 
-            const waterGeometry = new THREE.PlaneGeometry( 10000, 10000 );
+            const waterGeometry = new THREE.PlaneGeometry( 1000, 1000 );
             waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
             let sunVector = new THREE.Vector3(1,1,0);
             sunVector.normalize();
@@ -198,8 +198,8 @@ class TerrainPawn {
                     textureHeight: 512,
                     waterNormals: waterNormals,
                     sunDirection: sunVector,
-                    sunColor: 0xc84c0c,
-                    waterColor: 0x0000FF,
+                    sunColor: 0xffffff,
+                    waterColor: 0x001eff,
                     distortionScale: 3.7,
                     side:THREE.DoubleSide,
                     fog: scene.fog !== undefined
@@ -297,7 +297,7 @@ class TerrainPawn {
                 avatarPos.y-cameraDir.z*this.grassPatchRadius);
             cameraDir.set(cameraDir.x, -cameraDir.z, cameraDir.y);
 
-            this.grass.update(t*0.01, cameraDir, drawPos);
+            this.grass.update(t*0.001, cameraDir, drawPos);
 
             this.terrain.update(avatarPos.x, avatarPos.y);
 
@@ -314,7 +314,7 @@ class TerrainPawn {
     teardown() {
         let assetManager = this.service("AssetManager").assetManager;
 
-        assetManager.revoke("./assets/images/DisplacementMap.png", this.id);
+        assetManager.revoke("./assets/images/heightmap.jpg", this.id);
         assetManager.revoke("./assets/images/noise.jpg", this.id);
         assetManager.revoke("./assets/images/grass.jpg", this.id);
         assetManager.revoke("./assets/images/terrain1.jpg", this.id);

@@ -90,19 +90,19 @@ class LightPawn {
             this.csm = null;
         }
 
-        let dir = new THREE.Vector3(-2,-2,-0.5);
+        let dir = new THREE.Vector3(4,4,4);
         this.csm = new THREE.CSM({
             fade: true,
             far: camera.far,
-            maxFar: 1000,
-            cascades: 3,
-            shadowMapSize: 2048,
+            maxFar: 2000,
+            cascades: 2,
+            shadowMapSize: 4096,
             shadowbias: 0.00025,
             lightDirection: dir,
             camera: camera,
             parent: scene,
             lightIntensity: 0.6,
-            lightFar: 1000,
+            lightFar: 2000,
             mode: "practical"
         });
         this.csm.update();
