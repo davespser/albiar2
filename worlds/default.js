@@ -18,7 +18,7 @@ export function init(Constants) {
 
     Constants.UserBehaviorDirectory = "behaviors/default";
     Constants.UserBehaviorModules = [
-        "lights.js", "terrain.js", "ambientSound.js", "fireball.js",
+        "synchronousLoad.js","lights.js", "terrain.js", "ambientSound.js", "fireball.js",
         "blowing.js", "crowd.js", "horse.js", "menus.js", "urlLink.js", "replaceWorld.js", "walker.js"
     ];
 
@@ -186,7 +186,7 @@ export function init(Constants) {
         {
             card: {
                 name:"Terrain",
-                behaviorModules: ["Terrain", "Menus"],
+                behaviorModules: ["Terrain", "Menus","synchronousLoad"],
                 layers: ["terrain"],
                 type: "object",
                 translation:[0, 0, 0],
@@ -225,31 +225,28 @@ export function init(Constants) {
         },
         {
             card: {
-                dataLocation: "./assets/3D/galleon_model.glb",
-                dataScale: [1,1,1],
-                fileName: "/galleon_model.glb",
-                layers: [
-                    "walk", "pointer"
-                ],
-                modelType: "glb",
-                name: "/galleon_model.glb",
-                translation: [
-                    197.04842673287243,
-                    -16.822857610412652,
-                    215.58989538473676
-                ],
-                rotation: [
-                    0,
-                    -0.8375393574138387,
-                    0,
-                    0.5463769987680797
-                ],
-                shadow: true,
-                singleSided: true,
-                noFog: true,
-                type: "3d",
-                flatten: true,
-                attribution: "Havolik, modified by Kai Oldman",
+                    translation: [-325.1700673890571, -16.82285761041265, 225.27029600207842],
+    rotation: [0, -0.9996797617296773, 0, 0.02530561179058155],
+    layers: ["walk", "pointer"],
+    behaviorModules: ["Blowing"],
+    name: "/galleon_model.glb",
+    animationClipIndex: 0,
+    animationStartTime: 2907,
+    attribution: "Havolik, modified by Kai Oldman",
+    dataLocation: "./assets/3D/galleon_model.glb",
+    dataScale: [1, 1, 1],
+    fileName: "/galleon_model.glb",
+    flatten: true,
+    modelType: "glb",
+    noFog: false,
+    placeholder: true,
+    placeholderColor: 8421504,
+    placeholderOffset: [0, 0, 0],
+    placeholderSize: [1000, 0.1, 1000],
+    shadow: true,
+    singleSided: false,
+    type: "3d",
+
             },
         },
  	{
@@ -272,8 +269,5 @@ export function init(Constants) {
     type: "3d",
             },
         },
- 
-
-        
-    ];
+            ];
 }
