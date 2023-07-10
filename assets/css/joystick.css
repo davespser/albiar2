@@ -10,7 +10,7 @@
     border-radius: 50%;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     opacity: 0.75;
-    background-image: url(".images/joystick.png");
+    background-image: url(".assets/images/joystick.png");
     z-index: 200;
 }
 
