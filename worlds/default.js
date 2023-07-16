@@ -18,7 +18,7 @@ export function init(Constants) {
 
     Constants.UserBehaviorDirectory = "behaviors/default";
     Constants.UserBehaviorModules = [
-        "synchronousLoad.js","lights.js", "terrain.js", "ambientSound.js", "fireball.js",
+        "lights.js", "terrain.js", "ambientSound.js", "fireball.js",
         "blowing.js", "crowd.js", "horse.js", "menus.js", "urlLink.js", "replaceWorld.js", "walker.js"
     ];
 
@@ -183,6 +183,30 @@ export function init(Constants) {
                 type: "2d",
             }
         },
+	      {
+            card: {
+                name: "alumbrado",
+     translation: [150.0948712119547, -16.086605813965868, 82.1730938466165],
+            scale: [0.8235336534424736, 0.8235336534424736, 0.8235336534424736],
+            rotation: [0, 0, 0, -0.9994499665092285],
+            layers: ["walk", "pointer"],
+            name: "/alumbrado.glb",
+            dataLocation: "./assets/3D/alumbrado.glb",
+            dataScale: [1.2, 1, 1.2],
+            fileName: "/alumbrado.glb",
+		 placeholderOffset: [0, 0, 0],
+    placeholderSize: [1000, 0.1, 1000],
+		 placeholder: true,
+    placeholderColor: 16777184,
+	
+            flatten: true,
+            modelType: "glb",
+            noFog: true,
+            shadow: false,
+            singleSided: true,
+            type: "3d",
+            }
+        },
         {
             card: {
                 name:"Terrain",
@@ -223,8 +247,28 @@ export function init(Constants) {
             }
         },
         {
+        card:{
+            translation: [150.0948712119547, -16.086605813965868, 82.1730938466165],
+            scale: [0.8235336534424736, 0.8235336534424736, 0.8235336534424736],
+            rotation: [0, 0, 0, -0.9994499665092285],
+            layers: ["walk", "pointer"],
+            name: "/almacen.glb",
+            animationClipIndex: 0,
+            animationStartTime: 9324,
+            dataLocation: "./assets/3D/almacen.glb",
+            dataScale: [1.2, 1, 1.2],
+            fileName: "/almacen.glb",
+            flatten: true,
+            modelType: "glb",
+            noFog: true,
+            shadow: true,
+            singleSided: true,
+            type: "3d",
+              }
+          },
+        {
             card: {
-                    translation: [-325.1700673890571, -16.82285761041265, 225.27029600207842],
+                    translation: [-450.1700673890571, -10.82285761041265, 125.27029600207842],
     rotation: [0, -0.9996797617296773, 0, 0.02530561179058155],
     layers: ["walk", "pointer"],
     name: "/galleon_model.glb",
@@ -250,7 +294,7 @@ export function init(Constants) {
  	{
             card: {
                  translation: [152.8688916176863, -19, 86.75497384472558],
-    layers: ["walk", "pointer"],
+    layers: ["walk", "pointer","terrain"],
     name: "/cartagena.glb",
     dataLocation: "./assets/3D/cartagenapuerto.glb",
     dataScale: [1, 1, 1],
