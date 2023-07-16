@@ -11,7 +11,7 @@ class LightPawn {
 
         this.setupCSM(scene, camera, Microverse.THREE);
 
-        const ambient = new Microverse.THREE.AmbientLight( 0xffffff, .5 );
+        const ambient = new Microverse.THREE.AmbientLight( 0x0x9c79c1, .25 );
         group.add(ambient);
         this.lights.push(ambient);
 
@@ -96,13 +96,13 @@ class LightPawn {
             far: camera.far,
             maxFar: 1000,
             cascades: 3,
-            shadowMapSize: 2048,
+            shadowMapSize: 1024,
             shadowbias: 0.00025,
             lightDirection: dir,
             camera: camera,
             parent: scene,
-            lightIntensity: 0.6,
-            lightFar: 1000,
+            lightIntensity: 0.2,
+            lightFar: 200,
             mode: "practical"
         });
         this.csm.update();
